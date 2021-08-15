@@ -80,6 +80,12 @@ class Empleado {
 		altaContrato = calendario.getTime();
 	}
 
+	public Empleado(String nom) {
+
+		this(nom,30000,2000,01,01);
+	}
+
+	
 	private String nombre;
 	private double sueldo;
 	private Date altaContrato;
