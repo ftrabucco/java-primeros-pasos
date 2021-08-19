@@ -31,14 +31,7 @@ public class Uso_Empleado {
 		 * dameSueldo()+ " Fecja de Alta: "+ empleado3.dameFechaContrato());
 		 */
 
-		Empleado[] misEmpleados = new Empleado[3];
-
-		misEmpleados[0] = new Empleado("Paco Gómez", 85000, 1990, 12, 17);
-
-		misEmpleados[1] = new Empleado("Ana López", 95000, 1995, 6, 02);
-
-		misEmpleados[2] = new Empleado("Paco Gómez", 105000, 2002, 03, 15);
-
+		
 		/*
 		 * for(int i=0;i<3;i++) {
 		 * 
@@ -54,7 +47,23 @@ public class Uso_Empleado {
 		 * 
 		 * }
 		 */
+		
+		
+		Jefatura jefe_RRHH=new Jefatura("Fran",50000,2000,07,07);
+		
+		jefe_RRHH.estableceIncentivo(9000);
 
+		Empleado[] misEmpleados = new Empleado[4];
+
+		misEmpleados[0] = new Empleado("Paco Gómez", 85000, 1990, 12, 17);
+
+		misEmpleados[1] = new Empleado("Ana López", 95000, 1995, 6, 02);
+
+		misEmpleados[2] = new Empleado("Paco Gómez", 105000, 2002, 03, 15);
+		
+		misEmpleados[3] = jefe_RRHH; //Polimorfismo en acción. Principio de sustitución
+				
+		
 		for (Empleado e : misEmpleados) {
 
 			e.subeSueldo(5);
@@ -112,5 +121,33 @@ class Empleado {
 
 		sueldo += aumento;
 	}
-
 }
+
+class Jefatura extends Empleado{
+
+	public Jefatura(String nom, double sue, int agno, int mes, int dia) {
+		
+		super(nom, sue, agno, mes, dia);
+		
+	}
+	
+	private double incentivo;
+	
+	public void estableceIncentivo(double b) {
+		
+		incentivo=b;
+	}
+	
+	public double dameSueldo() {
+		
+		double sueldoJefe=super.dameSueldo();
+		
+		return sueldoJefe+incentivo;
+	}
+	
+	
+	
+}
+
+
+
