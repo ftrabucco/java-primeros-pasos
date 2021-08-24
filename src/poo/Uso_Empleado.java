@@ -53,7 +53,7 @@ public class Uso_Empleado {
 		
 		jefe_RRHH.estableceIncentivo(9000);
 
-		Empleado[] misEmpleados = new Empleado[4];
+		Empleado[] misEmpleados = new Empleado[5];
 
 		misEmpleados[0] = new Empleado("Paco Gómez", 85000, 1990, 12, 17);
 
@@ -62,7 +62,12 @@ public class Uso_Empleado {
 		misEmpleados[2] = new Empleado("Paco Gómez", 105000, 2002, 03, 15);
 		
 		misEmpleados[3] = jefe_RRHH; //Polimorfismo en acción. Principio de sustitución
-				
+		
+		misEmpleados[4]=new Jefatura("María",95000,1999,5,26);
+		
+		Jefatura jefe_Finanzas=(Jefatura)misEmpleados[4];
+		
+		jefe_Finanzas.estableceIncentivo(10500);
 		
 		for (Empleado e : misEmpleados) {
 
