@@ -70,6 +70,9 @@ public class Uso_Empleado {
 		
 		jefe_Finanzas.estableceIncentivo(10500);
 		
+		System.out.println(jefe_Finanzas.tomar_decision("Dar más días de vacaciones a todos"
+				+ "los empleados"));
+		
 		for (Empleado e : misEmpleados) {
 
 			e.subeSueldo(5);
@@ -149,7 +152,7 @@ class Empleado implements Comparable{
 	}
 }
 
-class Jefatura extends Empleado{
+class Jefatura extends Empleado implements Jefe{
 
 	public Jefatura(String nom, double sue, int agno, int mes, int dia) {
 		
@@ -169,6 +172,12 @@ class Jefatura extends Empleado{
 		double sueldoJefe=super.dameSueldo();
 		
 		return sueldoJefe+incentivo;
+	}
+
+	@Override
+	public String tomar_decision(String decision) {
+		// TODO Auto-generated method stub
+		return "Un miembro de la dirección ha tomado la decisión de:" + decision;
 	}
 	
 	
