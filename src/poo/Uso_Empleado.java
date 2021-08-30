@@ -1,5 +1,6 @@
 package poo;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -73,10 +74,12 @@ public class Uso_Empleado {
 
 			e.subeSueldo(5);
 		}
+		
+		Arrays.sort(misEmpleados);
 
 		for (Empleado e : misEmpleados) {
 
-			System.out.println("Nombre: " + e.dameNombre() + " Sueldo: " + e.dameSueldo() + " Fecja de Alta: "
+			System.out.println(e.dameNombre() + " Sueldo: " + e.dameSueldo() + " Fecha de Alta: "
 					+ e.dameFechaContrato());
 		}
 
@@ -84,7 +87,7 @@ public class Uso_Empleado {
 
 }
 
-class Empleado {
+class Empleado implements Comparable{
 
 	public Empleado(String nom, double sue, int agno, int mes, int dia) {
 
@@ -92,6 +95,8 @@ class Empleado {
 		sueldo = sue;
 		GregorianCalendar calendario = new GregorianCalendar(agno, mes - 1, dia);
 		altaContrato = calendario.getTime();
+		++idSiguiente;
+		id=idSiguiente;
 	}
 
 	public Empleado(String nom) {
@@ -104,10 +109,12 @@ class Empleado {
 	private double sueldo;
 	private Date altaContrato;
 	private String seccion;
-
+	private int id=1;
+	private static int idSiguiente;
+	
 	public String dameNombre() {
 
-		return nombre;
+		return "ID: "+ id +" Nombre: "+nombre;
 	}
 
 	public double dameSueldo() {
@@ -125,6 +132,20 @@ class Empleado {
 		double aumento = sueldo * porcentaje / 100;
 
 		sueldo += aumento;
+	}
+
+	@Override
+	public int compareTo(Object miObjeto) {
+		// TODO Auto-generated method stub
+		Empleado otroEmpleado=(Empleado)miObjeto;
+		
+		if(this.id<otroEmpleado.id) {
+			return -1;
+		}
+		if(this.id>otroEmpleado.id) {
+			return 1;
+		}
+		return 0;
 	}
 }
 
