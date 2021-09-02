@@ -73,6 +73,14 @@ public class Uso_Empleado {
 		System.out.println(jefe_Finanzas.tomar_decision("Dar más días de vacaciones a todos"
 				+ "los empleados"));
 		
+		jefe_Finanzas.establece_bonus(5000);
+		
+		System.out.println("El jefe "+jefe_Finanzas.dameNombre()+" tiene un bonus de: "+
+		jefe_Finanzas.establece_bonus(500));
+		
+		System.out.println(misEmpleados[3].dameNombre()+" tiene un bonus de: "+
+		misEmpleados[3].establece_bonus(200));
+		
 		for (Empleado e : misEmpleados) {
 
 			e.subeSueldo(5);
@@ -90,7 +98,7 @@ public class Uso_Empleado {
 
 }
 
-class Empleado implements Comparable{
+class Empleado implements Comparable, Trabajadores{
 
 	public Empleado(String nom, double sue, int agno, int mes, int dia) {
 
@@ -150,6 +158,12 @@ class Empleado implements Comparable{
 		}
 		return 0;
 	}
+	
+	public double establece_bonus(double gratificacion) {
+		
+		return Trabajadores.bonus_base+gratificacion;
+		
+	}
 }
 
 class Jefatura extends Empleado implements Jefe{
@@ -180,6 +194,12 @@ class Jefatura extends Empleado implements Jefe{
 		return "Un miembro de la dirección ha tomado la decisión de:" + decision;
 	}
 	
+	public double establece_bonus(double gratificacion) {
+		
+		double prima=2000;
+		
+		return Trabajadores.bonus_base+gratificacion+prima;
+	}
 	
 	
 }
