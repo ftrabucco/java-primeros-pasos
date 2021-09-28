@@ -26,7 +26,7 @@ class MarcoImagen extends JFrame {
 
 		setTitle("prueba con imagen");
 
-		setBounds(750, 300, 300, 200);
+		setSize(500, 500);
 
 		LaminaConImagen milamina = new LaminaConImagen();
 
@@ -46,13 +46,16 @@ class LaminaConImagen extends JPanel {
 		// File miimagen=new File("src/graficos/amarok.png");
 
 		try {
-			imagen = ImageIO.read(new File("src/graficos/amarok.png"));
+			imagen = ImageIO.read(new File("src/graficos/java.png"));
 		} catch (IOException e) {
 
 			e.printStackTrace();
 		}
 
-		g.drawImage(imagen, 5, 5, null);
+		int anchuraImagen = imagen.getWidth(this);
+		int alturaImagen = imagen.getHeight(this);
+
+		g.drawImage(imagen, 0, 0, null);
 
 	}
 }
