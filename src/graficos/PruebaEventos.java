@@ -1,9 +1,11 @@
 package graficos;
 
 import java.awt.*;
+
 import javax.swing.*;
 import javax.imageio.*;
 import java.io.*;
+import java.awt.event.*;
 
 public class PruebaEventos {
 
@@ -18,18 +20,13 @@ public class PruebaEventos {
 
 }
 
-
-
-
-
-
 class MarcoBotones extends JFrame {
 
 	public MarcoBotones() {
 
 		setTitle("Botones y eventos");
 
-		setBounds(700,300,500,300);
+		setBounds(700, 300, 500, 300);
 
 		LaminaConBotones milamina = new LaminaConBotones();
 
@@ -38,13 +35,37 @@ class MarcoBotones extends JFrame {
 	}
 }
 
-class LaminaConBotones extends JPanel {
-	
+class LaminaConBotones extends JPanel implements ActionListener {
 
-	public void paintComponent(Graphics g) {
+	JButton botonAzul = new JButton("Azul");
+	JButton botonAmarillo = new JButton("Amarillo");
+	JButton botonRojo = new JButton("Rojo");
 
+	public LaminaConBotones() {
 
+		add(botonAzul);
+		add(botonAmarillo);
+		add(botonRojo);
 
+		botonAzul.addActionListener(this);
+		botonAmarillo.addActionListener(this);
+		botonRojo.addActionListener(this);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+
+		Object botonPulsado=e.getSource();
+		
+		if(botonPulsado==botonAzul) {
+			setBackground(Color.BLUE);
+		}
+		else if(botonPulsado==botonAmarillo) {
+			setBackground(Color.YELLOW);
+		} else {
+			setBackground(Color.RED);
+		}
+		
 
 	}
 }
